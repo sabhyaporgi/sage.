@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohit happy birthday 🎂</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('https://images.unsplash.com/photo-1506748686212-5f7d68162b9d') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+        .card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 500px;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.6); /* Darken background for readability */
+            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
+            animation: fadeIn 2s ease-in-out;
+        }
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #ffffff, #ffeaa7);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .typing {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid white;
+            font-size: 1.3em;
+            width: 0;
+            animation: typing 5s steps(50, end) forwards, blink 0.7s infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        .heart {
+            font-size: 40px;
+            color: red;
+            position: absolute;
+            animation: float 4s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+        .btn {
+            background: white;
+            color: #ff758c;
+            padding: 10px 20px;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .surprise {
+            display: none;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        #emoji {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Rohit happy birthday 🎂</h1>
+        <p class="typing">I love you so much more than words can say ❤</p>
+        <button class="btn" onclick="showMessage()">Click for a Surprise!</button>
+        <p id="message" class="surprise">You're my favorite bug-free code 🥰</p>
+        <p id="loveMessage" class="surprise">I love you Rogger 💖</p>
+
+        <!-- New Buttons for Emojis -->
+        <button class="btn" onclick="showEmoji('❤')">Love</button>
+        <button class="btn" onclick="showEmoji('🫂')">Hug</button> 
+        <button class="btn" onclick="showEmoji('😘')">Kiss</button>
+
+        <div id="emoji"></div>
+
+        <!-- New Thank You Message -->
+        <p id="thankYou" class="surprise">Thank you for everything Chiyu loves you 💖</p>
+    </div>
+
+    <script>
+        function showMessage() {
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('loveMessage').style.display = 'block';
+            document.getElementById('thankYou').style.display = 'block'; // Show "Thank You" message
+        }
+
+        function showEmoji(emoji) {
+            const emojiDiv = document.getElementById("emoji");
+            emojiDiv.innerHTML = emoji;
+            emojiDiv.style.display = 'block';
+            createHeart(); // Create hearts when buttons are clicked
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 500); // Floating hearts at random intervals
+    </script>
+
+</body>
+</html>
